@@ -1,6 +1,6 @@
 Flask
 pandas
-matplotlib
+matplotlibgit
 seaborn
 gunicorn
 scipy
