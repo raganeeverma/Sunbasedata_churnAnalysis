@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <title>Customer Churn Analysis</title>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Style.css')}}">
+
+      <style>
+          body{
+              #background: #4d0026;
+              background: linear-gradient(to left, #667292 0%, #a2b9bc 100%);
+          }
+
+          footer a{
+            color: #fff;
+          }
+          footer a:hover{
+            color: #fff;
+          }
+          .centerdiv{
+            height: 15vh;
+            display: flex;
+            #justify-content: center;
+            align-items: center;
+          }
+          .centerdiv a{
+            height: 30px;
+            width: 30px;
+            background-color: #f5f6fa;
+            border-radius: 50px;
+            text-align: center;
+            margin: 5px;
+            line-height: 30px;
+            #box-shadow: 1px 4px 2px 2px #dcdde1;
+            position: relative;
+            overflow: hidden;
+          }
+          .centerdiv a i{
+            transition: all 0.3s linear;
+          }
+          .centerdiv a:hover i{
+            transform: scale(1.5);
+            color: #f5f6fa;
+          }
+          .centerdiv a:before{
+            content: "";
+            width: 120%; height: 120%;
+            position: absolute;
+            top: 90%; left: -50%;
+            background-color: #00a8ff;
+            transform: rotate(60deg);
+          }
+
+          .centerdiv a:hover:before{
+            animation: socialicons 0.8s 1;
+            animation-fill-mode: forwards;
+          }
+          @keyframes socialicons {
+
+            0%{ top: 90%; left: -50%;}
+            50%{ top: -60%; left: -10%;}
+            100%{ top: -10%; left: -10%}
+          }
+
+          .fa-facebook-f{
+            color: #e84393;
+          }
+          .fa-instagram{
+            color: #e84393;
+          }
+          .fa-github{
+            color: #e84118;
+          }
+          .fa-linkedin{
+            color: #0097e6;
+          }
+          .fa-twitter{
+            color: #0097e6;
+          }
+      </style>
+
+    </head>
+
+    <body>
+
+      <div class="login">
+
+        <div style ="text-align:center">
+          <h1>Customer Churn Analysis</h1>
+
+        </div>
+      
+        <form action="{{ url_for('predict')}}"method="post">
+
+
+     <div class="wrapper">
+       <div class="container my-5">
+         <div class="row">
+           <div class="col-md-10 col-sm-6 mx-auto">
+             <form class="" action="/predict" method="post">
+
+	               <div class="form-group">
+                 <input type="text" name="Monthly_Bill" id="Monthly_Bill" class="form-control" required>
+                 <label for="Monthly_Bill" class="ph-area">Enter Monthly_Bill</label>
+
+
+               
+
+               </div>
+		   <div class="form-group">
+                 <input type="text" name="Total_Usage_GB" id="Total_Usage_GB" class="form-control" required>
+                 <label for="Total_Usage_GB" class="ph-area">Enter Total_Usage_GB</label>
+               </div>
+
+
+
+               <div class="form-group">
+                 <select class="form-control chosenn" name="Gender" required="required">
+               </div>
+               <option value="" selected>Gender</option>
+                   <option value="1">Female</option>
+                   <option value="0">Male</option>
+                 </select>
+                 
+               </div>
+
+
+               <div class="form-group">
+                <select class="form-control" name="Tenure_Group" required="required">
+                    <option value="" selected>Tenure_Group </option>
+                  <option value="0">1-2 year</option>
+                  <option value="2">3-6 month</option>
+                <option value="1">1-3 month</option>
+                </select>
+        
+            </div>
+
+
+               <div class="form-group">
+                 <select class="form-control chosenn" name="Age_group" required="required">
+                   <option value="" selected>Age_group</option>
+                   <option value="0">Teenager</option>
+                   <option value="1">Middle_age</option>
+                   <option value="2">Older</option>
+                   <option value="3">younger</option>
+                 </select>
+               </div>
+
+              <div class="form-group">
+                 <select class="form-control chosenn" name="location" required="required">
+                   <option value="" selected>location</option>
+                   <option value="2">Los Angeles</option>
+                   <option value="4">New York</option>
+                   <option value="3">Miami</option>
+                   <option value="0">Chicago</option>
+                   <option value="1">Houston</option>
+                 </select>
+               </div>
+
+              
+
+
+             <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+              <button type="reset" class="btn btn-primary btn-block btn-large" style="background-color:Tomato;">Reset</button>
+              
+             </div>
+           </form>
+           </div>
+         </div>
+       </div>
+     </div>
+
+
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+     integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </form>
+
+
+    </div>
+    <h1 style= "background-color:DodgerBlue;" style="border:2px solid Violet;" style="color:Tomato;" >
+    {{prediction_text}}
+
+    </h1>
+
+    </body>
+
+  </html>
