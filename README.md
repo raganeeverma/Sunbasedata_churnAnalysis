@@ -140,5 +140,5 @@ Predict the saved model by using test data.
  create aap .py file  by using Flask API in which I put condition like if our model1 value is 0 the customer is not churn and model1 value is 1 then customer is churn.
 2. home.html is used for frontend .
 
-![Alt text](images/deployment.png)
+![Alt text](deployment.png)
 
